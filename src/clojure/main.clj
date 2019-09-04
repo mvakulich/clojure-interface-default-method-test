@@ -1,5 +1,5 @@
 (ns main
-  (:import (com.cruxteq ITest)))
+  (:import (com.cruxteq AbstractTest)))
 
 (defn -main
   [& args]
@@ -7,7 +7,7 @@
 
 (gen-class
  :name "com.cruxteq.Test"
- :implements [com.cruxteq.ITest]
+ :extends com.cruxteq.AbstractTest
  :exposes-methods {testString parentTestString}
  
  :prefix "itest-"
@@ -18,9 +18,7 @@
 (defn itest-init []
   [[] (ref {})])
 
-(defn itest-a [] "123")
-(defn itest-testString [this]
-  (.parentTestString this)); No matching field here
+(defn itest-a [this] "123")
 
 (defn test-iface-default
   []
